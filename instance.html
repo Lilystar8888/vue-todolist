@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>創建Vue實例</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--此處綁定的是input的a，不是input-->
+      <input v-model="input.a" />
+    </div>
+    
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                input:{
+                    a: '',
+                },
+            },
+            watch: {
+                input:{
+                    handler(val, oldval){
+                        console.log(val === oldval);
+                    },
+                    //immediate: true, //程式初始化就先跑watch偵聽value的值
+                    deep: true, //專門用於value是物件或是陣列的時候，偵聽裡面的值發生的改變
+                },
+          },
+        });
+    </script>
+</body>
+</html>
