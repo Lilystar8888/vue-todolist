@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-for="item in me">{{item.prop}} - {{item.value}}</div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                me: [
+                                {prop: 'name', value: '姚偉揚'},
+                                {prop: 'id', value: 'scars'},
+                                {prop: 'age', value: 22},
+                                {prop: 'password', value: '1234567'},
+                                {prop: '13', value: '大學畢業'},
+                                {prop: '8', value: '訂婚'},
+                                {prop: '4', value: '創辦公司'},
+                            ],
+            },
+        });
+    </script>
+</body>
+</html>

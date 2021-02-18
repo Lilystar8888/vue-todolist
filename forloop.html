@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--陣列-->
+        <ol>
+            <li v-for="item in todo" :class="item">{{item}}</li>
+        </ol>
+        <!--下拉式選單+數字-->
+        <select>
+            <option v-for="days in 31">{{days}}</option>
+        </select>
+        <!--下拉式選單+陣列+索引值-->
+        <select>
+            <option v-for="(month, index) in months" :value="index+1">{{month}}</option>
+        </select>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                todo: [
+                    '學會 JavaSctipt',
+                    '學會 Vue',
+                    '投遞履歷',
+                    '年薪百萬',
+                ],
+                months: [
+                    'Jan','Feb','Mar','Apr','May','Jun'
+                ],
+            },
+        });
+    </script>
+</body>
+</html>
