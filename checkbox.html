@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>偵聽鍵盤按鍵事件</title>
+    <title>打勾按鈕：checkbox</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <input v-model="input" @keydown.enter="enter"/>
-        <ul>
-            <li v-for="item in list">{{item}}</li>
-        </ul>
+        <input type="checkbox" id="chk" v-model="agree"/>
+        <label for="chk">Agree</label>
+        <h1>{{agree}}</h1>
+        <button @click="submit">Submit</button>
     </div>
     
     <script>
         new Vue({
             el:'#app',
             data:{
-                input:'',
-                list:[],
+                agree: false,
             },
-            methods: {
-                enter(){
-                    this.list.push(this.input);
-                    this.input = '';
+            methods:{
+                submit(){
+                    if(this.agree !== true) {
+                        alert("Please agree");
+                        return;
+                    }
                 },
             },
         });

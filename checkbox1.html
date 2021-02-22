@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打勾按鈕：checkbox</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" id="chk1" value="morning" v-model="times"/>
+        <label for="chk">Morning</label>
+        <input type="checkbox" id="chk2"  value="afternoon" v-model="times"/>
+        <label for="chk">Afternoon</label>
+        <input type="checkbox" id="chk3"  value="evening" v-model="times"/>
+        <label for="chk">Evening</label>
+        <h1>{{times}}</h1>
+        <button @click="submit">Submit</button>
+    </div>
+    
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                times: [],
+            },
+            methods:{
+                submit(){
+                    if(this.agree !== true) {
+                        alert("Please agree");
+                        return;
+                    }
+                },
+            },
+        });
+    </script>
+</body>
+</html>

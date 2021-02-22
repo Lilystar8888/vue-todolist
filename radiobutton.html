@@ -4,29 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>偵聽鍵盤按鍵事件</title>
+    <title>圓點按紐</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <input v-model="input" @keydown.enter="enter"/>
-        <ul>
-            <li v-for="item in list">{{item}}</li>
-        </ul>
+        <input type="radio" id="r1" value="male" v-model="gender"/>
+        <label for="r1">Male</label>
+        <input type="radio" id="r2" value="female" v-model="gender"/>
+        <label for="r2">Female</label>
+        <input type="radio" id="r2" value="others" v-model="gender"/>
+        <label for="r3">Others</label>
+        <h1>{{gender}}</h1>
     </div>
     
     <script>
         new Vue({
             el:'#app',
             data:{
-                input:'',
-                list:[],
+                gender: 'male', //預設為male
             },
-            methods: {
-                enter(){
-                    this.list.push(this.input);
-                    this.input = '';
-                },
+            methods:{
             },
         });
     </script>

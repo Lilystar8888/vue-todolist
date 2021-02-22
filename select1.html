@@ -4,29 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>偵聽鍵盤按鍵事件</title>
+    <title>select 與 option</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <input v-model="input" @keydown.enter="enter"/>
-        <ul>
-            <li v-for="item in list">{{item}}</li>
-        </ul>
+        <select v-model="year" multiple>
+            <option disabled value="">Select Year</option>
+            <option>2015</option>
+            <option>2016</option>
+            <option>2017</option>
+        </select>
+        <h1>{{year}}</h1>
     </div>
     
     <script>
         new Vue({
             el:'#app',
             data:{
-                input:'',
-                list:[],
+                year:[],
             },
-            methods: {
-                enter(){
-                    this.list.push(this.input);
-                    this.input = '';
-                },
+            methods:{
             },
         });
     </script>
