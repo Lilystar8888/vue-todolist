@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨組件的溝通</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <my-count></my-count>
+        <my-button></my-button>
+    </div>
+    <script>
+        const bus = new Vue(); //只是一個Vue實體，沒有綁定任何一個element
+            
+        Vue.component('my-count', {
+            data() {
+                return {
+                    count: 0,
+                };
+            },
+            mounted(){
+                bus.$on('add', ()=>{ //$on和$emit都是vue實例的方法
+                    this.count +=1;
+                });
+            },
+            template: `<h1>{{count}}</h1>`,
+        });
+    
+        Vue.component('my-button', {
+            template: `<button @click="click">+1</button>`,
+            methods:{
+                click(){
+                    bus.$emit('add'); //發出add這個事件
+                },
+            },
+        });
+    
+        new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+</html>

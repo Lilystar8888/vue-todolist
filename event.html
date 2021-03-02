@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用 v-on 綁定自訂事件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-button @my-click="clicked"></my-button>
+    </div>
+    
+    <script>
+        Vue.component('my-button',{
+            template:`<button @click="myClick">my-button</button>`,
+            methods:{
+                myClick(){
+                    this.$emit('my-click',1,2,3,4);
+                },
+            },
+        });
+    
+        new Vue({
+            el:'#app',
+            methods:{
+                clicked(w,x,y,z){
+                    alert(`${w},${x},${y},${z}`); //1234
+                },
+            },
+        });
+    </script>
+</body>
+</html>

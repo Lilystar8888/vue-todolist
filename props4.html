@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prop 驗證</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <counter start="20"></counter>
+    </div>
+    
+    <script>
+    
+        Vue.component('counter',{
+            props: {
+                //start: Number,
+                start: {
+                    type: Number,
+                    //vue.js:577 [Vue warn]: Invalid prop: type check failed for prop "start". Expected Number, got String.
+                    default: 10,
+                    validator(value){
+                        return value<=10;
+                        //[Vue warn]: Invalid prop: custom validator check failed for prop "start".
+                    },
+                },
+            },
+            data(){
+                return {
+                    count: this.start
+                };
+            },
+            template:`
+                <div>
+                    <h1>{{count}}</h1>
+                    <button @click="count+=1">+</button>
+                </div>
+            `
+        });
+    
+        new Vue({
+            el:'#app',
+            data:{
+            },
+            methods:{
+            },
+        });
+    </script>
+</body>
+</html>

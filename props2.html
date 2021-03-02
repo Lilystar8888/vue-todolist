@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動態綁定 Prop</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <post v-for="post in posts" :text="post.text" :author="post.author"></post>
+    </div>
+        
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                posts:[
+                    {text:'hello', author:'John'},
+                    {text:'world', author:'Jack'},
+                ],
+            },
+            components: { // Local component
+                post: {
+                    props:['author', 'text',],
+                    template: `<div>{{author}}: {{text}}</div>`,
+                },
+            },
+        });
+    </script>
+</body>
+</html>
